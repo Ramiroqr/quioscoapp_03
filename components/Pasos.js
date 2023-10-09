@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
+import { IoFastFoodOutline } from "react-icons/io5";
+import { PiListChecksLight } from "react-icons/pi";
+import { MdAttachMoney } from "react-icons/md";
+import MenuItem from "./MenuItem";
 
-const pasos = [
-    {paso: 1, nombre: 'Menú', url: '/'},
-    {paso: 2, nombre: "Resumen", url: '/resumen'},
-    {paso: 3, nombre: "Datos y Total", url: '/total'}
-]
+// const pasos = [
+//     {paso: 1, nombre: 'Menú', url: '/'},
+//     {paso: 2, nombre: "Resumen", url: '/resumen'},
+//     {paso: 3, nombre: "Datos y Total", url: '/total'}
+// ]
 
 const Pasos = () => {
 
@@ -24,16 +28,31 @@ const Pasos = () => {
 
     return (
         <>
-        <div className="flex gap-1 justify-around mb-5">
-            {pasos.map(paso => (
+        <div className=" w-11/12">
+            <div className="flex justify-around">
+                <MenuItem 
+                    title="Menú" address="/" Icon={IoFastFoodOutline}
+                    className={`${router.pathname === "/" ? 'bg-indigo-800' : ""}`}
+                />
+                <MenuItem 
+                    title="Resumen" address="/resumen" Icon={PiListChecksLight}
+                    className={`${router.pathname === "/resumen" ? 'bg-indigo-800' : 'bg-indigo-400'}`}
+                />
+                <MenuItem 
+                    title="Total" address="/total" Icon={MdAttachMoney}
+                    className={`${router.pathname === "/total" ? 'bg-indigo-800' : 'bg-indigo-400'}`}
+                />
+
+            </div>
+            {/* {pasos.map(paso => (
                 <button 
                     onClick={() => {
                         router.push(paso.url)
                     }}
                     key={paso.paso}
                     className={`${paso.url === router.pathname ? 'bg-indigo-800' : ""} md:text-md lg:text-2xl font-bold bg-indigo-400 hover:bg-indigo-800 px-3 py-2 sm:px-4 md:py-2 md:px-10 text-white rounded`}
-                >{paso.nombre}</button>
-            ))}
+                > {paso.nombre}</button>
+            ))} */}
         </div>
 
         <div className="bg-gray-100 mb-10">
